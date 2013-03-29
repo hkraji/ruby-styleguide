@@ -409,7 +409,8 @@ variables.
     end
 
 * Indent the `public`, `protected`, and `private` methods as much the method
-   definitions they apply to. Leave one blank line above them
+   definitions they apply to. Leave one blank line above them. Use indentetation
+   for `private` or `protected` methods, for code readability.
 
     ```Ruby
     class SomeClass
@@ -418,9 +419,9 @@ variables.
       end
 
       private
-      def private_method
-        # ...
-      end
+	    def private_method
+		  # ...
+	    end
     end
 
 * Avoid explicit use of `self` as the recipient of internal class or instance
@@ -508,16 +509,16 @@ variables.
     # good
     email_with_name = "#{user.name} <#{user.email}>"
 
-* Prefer double-quoted strings. Interpolation and escaped characters will
-   always work without a delimiter change, and `'` is a lot more common than
-   `"` in string literals
+* Prefer single-quoted strings. If there is no need for interpolation do not use them
+  single quoted strings are not so often used as e.g. `/` which would need to be escaped
+  in double-quoted strings.
 
     ```Ruby
     # bad
-    name = 'Bozhidar'
+    name = "Bozhidar"
 
     # good
-    name = "Bozhidar"
+    name = 'Bozhidar'
 
 * Avoid using `String#+` when you need to construct large data chunks.
    Instead, use `String#<<`. Concatenation mutates the string instance in-place
